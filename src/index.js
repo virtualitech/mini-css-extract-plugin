@@ -592,7 +592,7 @@ class MiniCssExtractPlugin {
           pluginName,
           (source, chunk, hash) => {
             const chunkMap = this.getCssChunkObject(chunk, compilation);
-
+            const {dynamicName} = this.options;
             if (Object.keys(chunkMap).length > 0) {
               const chunkMaps = chunk.getChunkMaps();
               const { crossOriginLoading } = mainTemplate.outputOptions;
@@ -648,8 +648,8 @@ class MiniCssExtractPlugin {
                     },
                     name: `" + (${JSON.stringify(
                       chunkMaps.name
-                    )}[chunkId]||chunkId) + (this.options.dynamicName ? eval(${
-                      this.options.dynamicName
+                    )}[chunkId]||chunkId) + (dynamicName ? eval(${
+                      dynamicName
                     }) : '') + "`,
                   },
                   contentHashType: MODULE_TYPE,
@@ -1094,7 +1094,7 @@ class MiniCssExtractPlugin {
     if (usedModules || !modules) {
       return usedModules;
     }
-
+  // eslint-disable-next-line no-param-reassign
     modules = [...modules];
 
     const [chunkGroup] = chunk.groupsIterable;
