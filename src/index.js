@@ -648,7 +648,9 @@ class MiniCssExtractPlugin {
                     },
                     name: `" + (${JSON.stringify(
                       chunkMaps.name
-                    )}[chunkId]||chunkId) + "`,
+                    )}[chunkId]||chunkId) + (this.options.dynamicName ? eval(${
+                      this.options.dynamicName
+                    }) : '') + "`,
                   },
                   contentHashType: MODULE_TYPE,
                 }

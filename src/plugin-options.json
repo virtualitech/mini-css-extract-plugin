@@ -22,6 +22,16 @@
         }
       ]
     },
+    "dynamicName": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "instanceof": "Function"
+        }
+      ]
+    },
     "ignoreOrder": {
       "type": "boolean"
     },
